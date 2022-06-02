@@ -387,6 +387,7 @@ end
 --@param parseAttributes indicates if tag attributes should be parsed or not. 
 --       If omitted, the default value is true.
 function XmlParser:parse(xml, parseAttributes)
+    print(self, xml, parseAttributes, type(self))
     if type(self) ~= "table" or getmetatable(self) ~= XmlParser then
         error("You must call xmlparser:parse(parameters) instead of xmlparser.parse(parameters)")
     end
