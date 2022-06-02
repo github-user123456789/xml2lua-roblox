@@ -429,7 +429,7 @@ function XmlParser:parse(xml, parseAttributes)
 
         parseTagType(self, xml, f)
         f.pos = f.endMatch + 1
-        if updatecycles % 50 == 0 then
+        if updatecycles % 500 == 0 then
             task.wait()
         end
     end
