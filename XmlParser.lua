@@ -411,8 +411,10 @@ function XmlParser:parse(xml, parseAttributes)
         -- startText, endText,
         -- errStart, errEnd, extStart, extEnd,
     }
-
+    
+    local updatecycles = 0
     while f.match do
+        updatecycles += 1
         if not getNextTag(self, xml, f) then
             break
         end
@@ -428,6 +430,9 @@ function XmlParser:parse(xml, parseAttributes)
 
         parseTagType(self, xml, f)
         f.pos = f.endMatch + 1
+        if updatecycles % 50 == 0 then
+            task.wait()
+        end
     end
 end
 
